@@ -1,5 +1,6 @@
 import 'package:explorex_assignment/menu/models/menus_model.dart';
 import 'package:explorex_assignment/menu/provider/category_provider.dart';
+import 'package:explorex_assignment/menu/provider/category_scroll_controller_provider.dart';
 import 'package:explorex_assignment/styles/decoration/decoration_helper.dart';
 import 'package:explorex_assignment/styles/text_theme/text_theme_helper.dart';
 import 'package:flutter/material.dart';

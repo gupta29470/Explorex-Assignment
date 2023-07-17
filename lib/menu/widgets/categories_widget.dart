@@ -1,7 +1,9 @@
 import 'package:explorex_assignment/menu/models/menus_model.dart';
+import 'package:explorex_assignment/menu/provider/category_scroll_controller_provider.dart';
 import 'package:explorex_assignment/menu/widgets/category_widget.dart';
 import 'package:explorex_assignment/menu/widgets/wide_screen_view_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class CategoriesWidget extends StatefulWidget {
@@ -20,7 +22,6 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController expandController;
   late Animation<double> expandAnimation;
-  final ItemScrollController scrollController = ItemScrollController();
 
   @override
   void initState() {
@@ -63,21 +64,27 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
                   expandController: expandController,
                 );
               }
-              return ScrollablePositionedList.builder(
-                itemScrollController: scrollController,
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.all(16),
-                itemCount: widget.categories.length,
-                itemBuilder: (_, index) {
-                  return CategoryWidget(
-                    categoryTitle: widget.categories.keys.elementAt(index),
-                    categoryMenuList: widget.categories.values.elementAt(index),
-                    index: index,
-                    expandController: expandController,
-                    expandAnimation: expandAnimation,
-                  );
-                },
-              );
+              return Consumer(builder: (_, ref, __) {
+                ItemScrollController scrollController =
+                    ref.watch(categorySCProvider);
+
+                return ScrollablePositionedList.builder(
+                  itemScrollController: scrollController,
+                  physics: const ClampingScrollPhysics(),
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 40),
+                  itemCount: widget.categories.length,
+                  itemBuilder: (_, index) {
+                    return CategoryWidget(
+                      categoryTitle: widget.categories.keys.elementAt(index),
+                      categoryMenuList:
+                          widget.categories.values.elementAt(index),
+                      index: index,
+                      expandController: expandController,
+                      expandAnimation: expandAnimation,
+                    );
+                  },
+                );
+              });
             },
           );
         },

@@ -7,6 +7,12 @@ extension on BottomSheetCategoriesListWidget {
     required int index,
   }) {
     ref.read(categoryProvider.notifier).state = (index, true);
+    ProviderScope.containerOf(context, listen: false)
+        .read(categorySCProvider)
+        .scrollTo(
+          index: index,
+          duration: const Duration(milliseconds: 600),
+        );
     Navigator.pop(context);
   }
 }
