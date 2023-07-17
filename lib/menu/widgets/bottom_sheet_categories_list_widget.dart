@@ -36,6 +36,14 @@ class BottomSheetCategoriesListWidget extends StatelessWidget {
 
               return InkWell(
                 onTap: () {
+                  Scrollable.ensureVisible(
+                      GlobalObjectKey(currentCategory).currentContext ??
+                          context,
+                      duration: const Duration(
+                          seconds: 1), // duration for scrolling time
+                      alignment:
+                          .5, // 0 mean, scroll to the top, 0.5 mean, half
+                      curve: Curves.easeInOutCubic);
                   categoryTap(
                     context: context,
                     ref: ref,

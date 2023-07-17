@@ -2,6 +2,7 @@ import 'package:explorex_assignment/menu/models/menus_model.dart';
 import 'package:explorex_assignment/menu/widgets/category_widget.dart';
 import 'package:explorex_assignment/menu/widgets/wide_screen_view_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class CategoriesWidget extends StatefulWidget {
   final Map<String, List<MenuItemModel?>> categories;
@@ -19,6 +20,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController expandController;
   late Animation<double> expandAnimation;
+  final ItemScrollController scrollController = ItemScrollController();
 
   @override
   void initState() {
@@ -61,7 +63,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
                   expandController: expandController,
                 );
               }
-              return ListView.builder(
+              return ScrollablePositionedList.builder(
+                itemScrollController: scrollController,
                 physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.all(16),
                 itemCount: widget.categories.length,
