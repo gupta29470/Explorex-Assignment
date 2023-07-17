@@ -39,7 +39,6 @@ class CategoryWidget extends StatelessWidget {
         );
 
         return Container(
-          key: GlobalObjectKey(categoryTitle),
           margin: const EdgeInsets.only(bottom: 16),
           decoration: DecorationHelper.categoryDecor,
           child: Column(
@@ -120,46 +119,6 @@ class CategoryWidget extends StatelessWidget {
                               ),
                             ),
                           ],
-                          // children: List.generate(
-                          //   categoryMenuList.length,
-                          //   (index) {
-                          //     MenuItemModel? currentMenuItem =
-                          //         categoryMenuList[index];
-
-                          //     if (currentMenuItem != null &&
-                          //         currentMenuItem.id != null &&
-                          //         currentMenuItem.id?.isNotEmpty == true &&
-                          //         currentMenuItem.dish != null &&
-                          //         currentMenuItem.dish?.name != null &&
-                          //         currentMenuItem.dish?.name?.isNotEmpty ==
-                          //             true &&
-                          //         currentMenuItem.sellingPrice != null &&
-                          //         currentMenuItem.displayPrice != null) {
-                          //       return Column(
-                          //         crossAxisAlignment: CrossAxisAlignment.start,
-                          //         mainAxisSize: MainAxisSize.min,
-                          //         children: [
-                          //           Padding(
-                          //             padding: EdgeInsets.only(
-                          //               bottom: 16,
-                          //               top: index != 0 ? 16 : 0,
-                          //             ),
-                          //             child: FoodDetailWidget(
-                          //               currentMenuItem: currentMenuItem,
-                          //             ),
-                          //           ),
-                          //           if (index <
-                          //               categoryMenuList.length - 1) ...[
-                          //             const Divider(
-                          //               color: AppColorHelper.lilacChampagne,
-                          //             ),
-                          //           ]
-                          //         ],
-                          //       );
-                          //     }
-                          //     return const SizedBox.shrink();
-                          //   },
-                          // ),
                         ),
                       ),
                     ],
