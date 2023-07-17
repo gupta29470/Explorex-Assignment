@@ -12,9 +12,9 @@ extension on CategoryHeaderWidget {
         ref.read(categoryProvider.notifier).state = (index, false);
       }
 
-      expandController.reverse().whenComplete(
-            () => ref.read(categoryProvider.notifier).state = (-1, false),
-          );
+      expandController.reverse().whenComplete(() {
+        ref.read(categoryProvider.notifier).state = (-1, false);
+      });
     } else {
       ref.read(categoryProvider.notifier).state = (index, false);
 

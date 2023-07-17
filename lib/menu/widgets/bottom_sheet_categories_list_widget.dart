@@ -21,7 +21,7 @@ class BottomSheetCategoriesListWidget extends StatelessWidget {
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.only(
-          bottom: 16,
+          bottom: 60,
         ),
         itemCount: categories.length,
         shrinkWrap: true,
